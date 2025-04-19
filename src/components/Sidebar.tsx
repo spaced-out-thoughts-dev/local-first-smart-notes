@@ -1,14 +1,21 @@
-import React from 'react';
 import './Sidebar.css';
+import { Note } from '../App';
 
-function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) {
+interface SidebarProps {
+  notes: Note[];
+  onAddNote: () => void;
+  onDeleteNote: (noteId: string) => void;
+  activeNote: string | null;
+  setActiveNote: (noteId: string) => void;
+}
+
+function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }: SidebarProps) {
   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
 
   return (
     <div className="sidebar">
-      <div className="sidebar-header">
-        <h1>Notes</h1>
-        <button onClick={onAddNote}>Add</button>
+      <div className="sidebar-actions">
+        <button onClick={onAddNote}>Add Note</button>
       </div>
       <div className="sidebar-notes">
         {sortedNotes.map((note) => (
@@ -19,7 +26,12 @@ function Sidebar({ notes, onAddNote, onDeleteNote, activeNote, setActiveNote }) 
           >
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
-              <button onClick={() => onDeleteNote(note.id)}>Delete</button>
+              <button onClick={(e) => {
+                e.stopPropagation();
+                if (window.confirm(`Are you sure you want to delete "${note.title}"?`)) {
+                  onDeleteNote(note.id);
+                }
+              }}>Delete</button>
             </div>
             <p>{note.body && note.body.substr(0, 100) + '...'}</p>
             <small className="note-meta">

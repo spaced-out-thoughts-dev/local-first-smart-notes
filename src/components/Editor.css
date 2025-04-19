@@ -3,36 +3,102 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: var(--terminal-black);
+  position: relative;
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
 }
+
+/* Removed CRT effect */
 
 .editor-title {
   padding: 15px 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--neon-green);
+  background-color: var(--terminal-darker);
+}
+
+.editor-title::before {
+  color: var(--neon-green);
+  opacity: 0.7;
+  font-family: 'VT323', monospace;
+  margin-right: 5px;
 }
 
 .editor-title input {
-  width: 100%;
+  width: calc(100% - 50px);
   border: none;
+  background: transparent;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--neon-green);
   padding: 5px 0;
   outline: none;
+  text-shadow: var(--text-shadow);
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
 }
 
 .editor-body {
   flex: 1;
   padding: 15px 20px;
+  background-color: var(--terminal-black);
+}
+
+.editor-body::before {
+  color: var(--neon-green);
+  opacity: 0.7;
+  font-family: 'VT323', monospace;
+  position: absolute;
+  top: 80px;
+  left: 20px;
 }
 
 .editor-body textarea {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 20px);
+  margin-top: 20px;
   border: none;
   resize: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.5;
-  color: #444;
+  color: var(--neon-green);
   outline: none;
-  font-family: inherit;
+  font-family: 'Fira Code', monospace;
+  background-color: transparent;
+  box-shadow: none;
+  text-shadow: var(--text-shadow);
+  padding: 10px;
+  font-weight: 300;
 }
+
+/* Custom scrollbar */
+.editor-body textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-body textarea::-webkit-scrollbar-track {
+  background: var(--terminal-darker);
+}
+
+.editor-body textarea::-webkit-scrollbar-thumb {
+  background: var(--neon-green);
+  border-radius: 4px;
+}
+
+.no-active-note {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--neon-green);
+  font-weight: bold;
+  text-shadow: var(--text-shadow);
+  background-color: var(--terminal-black);
+  font-family: 'VT323', monospace;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+/* Removed animations */

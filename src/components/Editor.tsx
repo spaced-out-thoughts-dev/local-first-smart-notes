@@ -1,10 +1,14 @@
-import React from 'react';
 import './Editor.css';
+import { Note } from '../App';
 
-function Editor({ activeNote, onUpdateNote }) {
-  const onEditField = (field, value) => {
+interface EditorProps {
+  activeNote: Note | null;
+  onUpdateNote: (updatedNote: Partial<Note>) => void;
+}
+
+function Editor({ activeNote, onUpdateNote }: EditorProps) {
+  const onEditField = (field: keyof Note, value: string) => {
     onUpdateNote({
-      ...activeNote,
       [field]: value
     });
   };

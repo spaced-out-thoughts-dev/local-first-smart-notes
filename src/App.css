@@ -1,15 +1,30 @@
 .App {
   display: flex;
   height: 100vh;
+  background-color: var(--terminal-black);
+  border: 1px solid var(--terminal-border);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Removed CRT scan lines */
 
 .no-active-note {
   width: 70%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  color: #999;
+  color: var(--neon-green);
   font-weight: bold;
+  text-shadow: var(--text-shadow);
+  background-color: var(--terminal-black);
+  font-family: 'VT323', monospace;
+  letter-spacing: 2px;
 }
+
+/* Removed blinking cursor animation */
+
+/* Removed matrix rain effect */
