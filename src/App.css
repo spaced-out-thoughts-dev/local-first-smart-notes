@@ -1,0 +1,15 @@
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.no-active-note {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #999;
+  font-weight: bold;
+}
