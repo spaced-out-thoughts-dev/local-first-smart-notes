@@ -16,7 +16,14 @@
     "directories": {
       "buildResources": "assets",
       "output": "dist"
-    }
+    },
+    "extraResources": [
+      {
+        "from": "public/models",
+        "to": "models",
+        "filter": ["*.gguf"]
+      }
+    ]
   },
   "description": "Local-first smart notes application",
   "author": {

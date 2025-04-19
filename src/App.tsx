@@ -5,6 +5,7 @@ import { updateText } from '@automerge/automerge/next'
 import type { AutomergeUrl } from '@automerge/automerge-repo'
 import Sidebar from './components/Sidebar'
 import Editor from './components/Editor'
+import AIAssistant from './components/AIAssistant'
 
 export interface Note {
   id: string;
@@ -80,6 +81,8 @@ function App({ docUrl }: { docUrl: AutomergeUrl }) {
     </div>
   );
 
+  const activeNote = getActiveNote();
+
   return (
     <div className="App">
       <Sidebar 
@@ -90,9 +93,10 @@ function App({ docUrl }: { docUrl: AutomergeUrl }) {
         setActiveNote={setActiveNote}
       />
       <Editor 
-        activeNote={getActiveNote()} 
+        activeNote={activeNote} 
         onUpdateNote={onUpdateNote} 
       />
+      <AIAssistant activeNoteContent={activeNote?.body} />
     </div>
   );
 }
