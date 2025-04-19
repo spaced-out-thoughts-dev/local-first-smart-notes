@@ -4,12 +4,12 @@ import App, { type NotesList } from './App.tsx'
 
 import './index.css'
 import { isValidAutomergeUrl, Repo } from '@automerge/automerge-repo'
-// import { BrowserWebSocketClientAdapter } from '@automerge/automerge-repo-network-websocket'
+import { BrowserWebSocketClientAdapter } from '@automerge/automerge-repo-network-websocket'
 import { IndexedDBStorageAdapter } from "@automerge/automerge-repo-storage-indexeddb"
 import { RepoContext } from '@automerge/automerge-repo-react-hooks'
 
 const repo = new Repo({
-  network: [], // [new BrowserWebSocketClientAdapter("wss://sync.automerge.org")],
+  network: [new BrowserWebSocketClientAdapter("ws://192.168.4.157:3030")],
   storage: new IndexedDBStorageAdapter(),
 })
 
