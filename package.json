@@ -3,11 +3,31 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "main": "dist-electron/main.js",
+  "build": {
+    "appId": "com.local-first-smart-notes",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    }
+  },
+  "description": "Local-first smart notes application",
+  "author": {
+    "name": "Local First Notes Team"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build:electron": "tsc && vite build && electron-builder",
+    "build:ios": "vite build && npx cap sync ios",
+    "build:android": "vite build && npx cap sync android"
   },
   "dependencies": {
     "@automerge/automerge-repo": "^1.1.2",
@@ -15,21 +35,28 @@
     "@automerge/automerge-repo-network-websocket": "^1.1.2",
     "@automerge/automerge-repo-react-hooks": "^1.1.2",
     "@automerge/automerge-repo-storage-indexeddb": "^1.1.2",
+    "@capacitor/android": "^7.2.0",
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0",
+    "@capacitor/ios": "^7.2.0",
     "@picocss/pico": "^2.0.6",
+    "nanoid": "^4.0.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "nanoid": "^4.0.2",
     "vite-plugin-wasm": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
+    "electron": "^35.2.0",
+    "electron-builder": "^26.0.12",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.2",
     "typescript-eslint": "^7.3.1",
-    "vite": "^5"
+    "vite": "^5",
+    "vite-plugin-electron": "^0.29.0"
   }
 }

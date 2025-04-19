@@ -10,7 +10,19 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+dist-electron
 *.local
+
+# Electron build artifacts
+out/
+release/
+.vite/
+*.dmg
+*.app
+*.exe
+*.zip
+*.blockmap
+*.asar
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +34,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ignore mobile build assets
+ios
+android
